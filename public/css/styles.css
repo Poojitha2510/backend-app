@@ -1,3 +1,27 @@
+*{
+    margin: 0px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(85, 49, 1);
+    color: white;
+    padding: 10px;
+}
+
+.header li{
+    display: inline-block;
+    padding: 5px;
+    font-size: 20px;
+}
+.footer{
+    background-color: rgb(62, 2, 2);
+    padding: 5px;
+    color: white;
+}
+
+
+
 .row {
     display: flex;
     /* justify-content: space-around; */
@@ -9,10 +33,4 @@
     border:1px solid gray;
     border-radius: 5px;
     
-}
-.header{
-    background-color: rgb(255, 0, 183);
-}
-.footer{
-    background-color: aqua;
 }
