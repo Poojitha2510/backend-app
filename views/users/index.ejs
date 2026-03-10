@@ -7,5 +7,15 @@
 </head>
 <body>
     <h2>User Page</h2>
+    <a href="/users/add">Add user</a>
+    <ol>
+    <% users.forEach(user =>{ %>
+        <li><%= user.name %>-<%= user.email %>-<%= user.password %>-<%= user.role %>
+            <a href="/users/<%= user._id %>/edit">Edit</a>
+        <a href="/users/<%= user._id %>/delete">Delete</a>
+            </li>
+        
+    <% }) %>
+    </ol>
 </body>
 </html>
