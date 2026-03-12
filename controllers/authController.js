@@ -5,15 +5,18 @@ const login = async (req, res) => {
 };
 const validateUser = async (req, res) => {
   const { email, password } = req.body;
-  const user = await userModel.findOne({ email, role: "admin" });
-  if (user) {
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (isMatch) {
-      req.session.user = user;
-      res.redirect("/");
-    } else {
-      res.redirect("/auth/login");
-    }
+
+  const user = await userModel.findOne({ email,role:"admin"});
+
+  if (!user) {
+    return res.redirect("/auth/login");
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+
+  if (isMatch) {
+    req.session.user = user;
+    res.redirect("/");
   } else {
     res.redirect("/auth/login");
   }
@@ -26,6 +29,7 @@ const registerUser = async (req, res) => {
   const body = req.body;
   const hashedPassword = await bcrypt.hash(body.password, 10);
   body.password = hashedPassword;
+
   await userModel.create(body);
   res.redirect("/auth/login");
 };
